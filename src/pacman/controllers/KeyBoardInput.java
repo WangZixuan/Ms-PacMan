@@ -12,11 +12,11 @@ public class KeyBoardInput extends KeyAdapter
 
     public int getKey()
     {
-    	return key;
+        return key;
     }
 
-    public void keyPressed(KeyEvent e) 
+    public void keyPressed(KeyEvent e)
     {
-        key=e.getKeyCode();
+        key = e.getKeyCode();
     }
 }
