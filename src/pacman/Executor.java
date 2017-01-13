@@ -48,27 +48,28 @@ public class Executor
     {
         Executor exec = new Executor();
 
-		/*
-        //run multiple games in batch mode - good for testing.
-		int numTrials=10;
-		exec.runExperiment(new RandomPacMan(),new RandomGhosts(),numTrials);
-		 */
-		
-		/*
-		//run a game in synchronous mode: game waits until controllers respond.
-		int delay=5;
-		boolean visual=true;
-		exec.runGame(new RandomPacMan(),new RandomGhosts(),visual,delay);
-  		 */
 
-        ///*
+        //run multiple games in batch mode - good for testing.
+        int numTrials = 1000;
+        exec.runExperiment(new NearestPillPacMan(), new MyGhosts(), numTrials);
+        exec.runExperiment(new RandomPacMan(), new MyGhosts(), numTrials);
+        exec.runExperiment(new RandomNonRevPacMan(), new MyGhosts(), numTrials);
+        exec.runExperiment(new StarterPacMan(), new MyGhosts(), numTrials);
+
+
+        //run a game in synchronous mode: game waits until controllers respond.
+		//int delay=5;
+		//boolean visual=true;
+		//exec.runGame(new RandomPacMan(),new RandomGhosts(),visual,delay);
+
+
+        /*
         //run the game in asynchronous mode.
         boolean visual = true;
-        //exec.runGameTimed(new NearestPillPacMan(),new AggressiveGhosts(),visual);
-        //exec.runGameTimed(new StarterPacMan(),new StarterGhosts(),visual);
-        //exec.runGameTimed(new HumanController(new KeyBoardInput()),new StarterGhosts(),visual);
-        exec.runGameTimed(new MyPacMan(), new MyGhosts(), visual);
-        //*/
+        exec.runGameTimed(new NearestPillPacMan(),new AggressiveGhosts(),visual);
+        exec.runGameTimed(new StarterPacMan(),new StarterGhosts(),visual);
+        exec.runGameTimed(new HumanController(new KeyBoardInput()),new MyGhosts(),visual);
+        */
 		
 		/*
 		//run the game in asynchronous mode but advance as soon as both controllers are ready  - this is the mode of the competition.
@@ -84,7 +85,7 @@ public class Executor
 		String fileName="replay.txt";
 		exec.runGameTimedRecorded(new HumanController(new KeyBoardInput()),new RandomGhosts(),visual,fileName);
 		//exec.replayGame(fileName,visual);
-		 */
+		*/
     }
 
     /**
@@ -115,7 +116,7 @@ public class Executor
             }
 
             avgScore += game.getScore();
-            System.out.println(i + "\t" + game.getScore());
+            //System.out.println(i + "\t" + game.getScore());
         }
 
         System.out.println(avgScore / trials);
