@@ -91,7 +91,6 @@ public class MyGhosts extends Controller<EnumMap<GHOST, MOVE>>
         return false;
     }
 
-
     /**
      * Checks if is crowded.
      *
@@ -107,6 +106,6 @@ public class MyGhosts extends Controller<EnumMap<GHOST, MOVE>>
             for (int j = i + 1; j < ghosts.length; j++)
                 distance += game.getShortestPathDistance(game.getGhostCurrentNodeIndex(ghosts[i]), game.getGhostCurrentNodeIndex(ghosts[j]));
 
-        return distance < CROWDED_DISTANCE ? true : false;
+        return distance < CROWDED_DISTANCE;
     }
 }
